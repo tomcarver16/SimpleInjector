@@ -53,6 +53,11 @@ DWORD GetProcIDByName(const char* procName) {
 
 int main(int argc, char** argv)
 {
+    if (argc < 2) {
+        std::cout << "Sample Usage:" << std::endl;
+        std::cout << argv[0] << " <name of process> <path of dll to load>";
+        return 0;
+    }
     const char* processName = argv[1];
     char* dllName = argv[2];
     DWORD procID = GetProcIDByName(processName);
@@ -62,4 +67,5 @@ int main(int argc, char** argv)
     } else {
         std::cout << "DLL couldn't be injected" << std::endl;
     }
+    return 0;
 }
